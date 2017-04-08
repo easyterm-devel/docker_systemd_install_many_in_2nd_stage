@@ -1,0 +1,40 @@
+version: '2'
+
+services:
+  imail:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: imail
+    container_name: imail_container
+    hostname: mx.me.me
+    #extra_hosts:
+      #mx.ooo.it: 127.0.0.1
+    environment:
+      VMAIL_DB_BIND_PASSWD: '8905JKOui26T'
+      VMAIL_DB_ADMIN_PASSWD: 'MKLuhT'
+      MYSQL_ROOT_PASSWD: 'BJIYIVGop'
+      FIRST_DOMAIN: 'ooo.it'
+      DOMAIN_ADMIN_PASSWD_PLAIN: 'KJBKNBUICTYD'
+      AMAVISD_DB_PASSWD: 'opmerjip'
+      IREDADMIN_DB_PASSWD: '47467568579i'
+      RCM_DB_PASSWD: 'KLNVYPO4'
+      SOGO_DB_PASSWD: 'PKOJGUIGYFgfrg'
+      SOGO_SIEVE_MASTER_PASSWD: 'RGYI'
+      IREDAPD_DB_PASSWD: 'kljuiggyf'
+    expose:
+      - '80'
+      - '443'
+      - '25'
+      - "587" # SMTP Submission
+      - "110" # POP3
+      - "143" # IMAP
+      - "993" # IMAPS
+      - "995" # POP3S
+      - "389" # LDAP
+      - "636" # LDAPS
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    tty: true
+    # command: sh ./post_install.sh

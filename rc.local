@@ -1,0 +1,7 @@
+#!/bin/sh
+cd /opt/iredmail
+bash ./run.sh
+# make one shot by making non-executible 
+chmod -x /etc/rc.local
+exit 0
+
